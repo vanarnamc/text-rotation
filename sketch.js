@@ -66,10 +66,9 @@ function draw() {
   // the circle our text will go around
 
   stroke(0,150,255);
-  textDisplay(.5);
-  textDisplay(.75);
   textDisplay(1);
-  textDisplay(2);
+  textDisplay(1.25);
+ 
   
 }
 
@@ -77,6 +76,7 @@ function draw() {
 function textDisplay(x){
   // calculate the angle between each letter
   let angleBetweenLetters = radians(distanceAngle) / str.length;
+
   scale(sin(frameCount*sinSpeed)*x);
   // display the text!
   push();
