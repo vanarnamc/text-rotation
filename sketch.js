@@ -25,7 +25,7 @@ CHALLENGES
 // text to display
 // (note: the space at the end helps keep the first
 // and last word from running into each other)
-let str = 'WATER MUSIC ';
+let str = 'WATER MUSIC WATER MUSIC WATER MUSIC WATER MUSIC ';
 
 let startAngle =    0;     // angle where text should start
 let distanceAngle = 360;   // how far (in degrees) text will go
@@ -33,6 +33,7 @@ let distanceAngle = 360;   // how far (in degrees) text will go
 let radius;                // set dynamically in setup()
 let font;
 
+let sinSpeed=.006;
 
 
 
@@ -50,7 +51,7 @@ function setup() {
   radius = min(width,height) / 3;
   
   // font size is also dynamic!
-  textSize(radius/2);
+  textSize(radius*.2);
   //textFont(font);
   textAlign(CENTER, BASELINE);
 }
@@ -65,16 +66,18 @@ function draw() {
   // the circle our text will go around
 
   stroke(0,150,255);
-  scale(sin(frameCount*.003));
-  textDisplay();
+  textDisplay(.5);
+  textDisplay(.75);
+  textDisplay(1);
+  textDisplay(2);
   
 }
 
 
-function textDisplay(){
+function textDisplay(x){
   // calculate the angle between each letter
   let angleBetweenLetters = radians(distanceAngle) / str.length;
-  
+  scale(sin(frameCount*sinSpeed)*x);
   // display the text!
   push();
   //translate(width/2, height/2);        // move to circle's center
